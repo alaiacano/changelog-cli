@@ -1,0 +1,36 @@
+# yaml-language-server: $schema=https://gist.githubusercontent.com/alaiacano/307e2fb6acb8d7c9be5137e8f33c4673/raw/b194eb64a4b7e71b77736d33258df7157f12331a/changelogschema.json
+
+title: My Changelog
+description: This is an example changelog in the format I made.
+unreleased:
+  version: unreleased
+  date: "2023-04-02"
+  description: This is the stuff that will be released soon. The `version` is probably still "unreleased."
+  added:
+    - description: Made a changelog!
+      author: 
+        name: Adam Laiacano
+      breaking: false
+
+releases:
+  - version: "0.0.0"
+    date: "2023-04-01"
+    description: Came up with the idea
+    added: []
+    changed: 
+      - description: Description of a breaking change
+        author:
+          name: john doe
+          email: john@doe.com
+        breaking: true
+      - description: A notable but non-breaking change.
+        author:
+          name: Jane Doe
+          email: jane@doe.com
+        breaking: false
+    removed:
+      - description: Got rid of the depreated code.
+        diff: http://www.github.com/org/project/pull/420
+    fixed:
+      - description: Finally fixed the bug everyone ran into.
+        diff: http://www.github.com/org/project/issues/421
