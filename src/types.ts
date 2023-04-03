@@ -27,7 +27,7 @@ export type ChangelogEntry = {
 export type ChangelogVersion = {
   // Version should be semantic version `major.minor.patch` or "cal-ver" `yy.mm.xx`
   version: string;
-
+  // TODO: add description
   // Dates should be `YYYY-MM-DD` format
   date: string;
   tag?: string;
