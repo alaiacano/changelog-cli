@@ -38,6 +38,7 @@ const stringifyVersion = (ver: ChangelogVersion): string => {
   let output = "";
   // Version header
   output += `## [${ver.version}] - ${ver.date}\n\n`;
+
   if (ver.added && ver.added.length > 0) {
     output += "### Added\n\n";
     output += stringifyEntries(ver.added);

@@ -2,8 +2,8 @@
 
 const { Command } = require("commander"); // add this line
 import fs from "fs-extra";
-import path from "path";
-import { yamlToMarkdown } from "./commands/convert";
+import { yamlToMarkdown } from "./commands/gen";
+import { releaseVersion } from "./commands/release";
 const figlet = require("figlet");
 
 const program = new Command();
@@ -13,10 +13,6 @@ program
   .version("1.0.0")
   .description("A CLI for managing changelogs");
 
-type GenType = {
-  yamlFile?: string | boolean;
-  output?: string | boolean;
-};
 // Generate a changelog from yaml
 program
   .command("gen")
@@ -29,11 +25,11 @@ program
     "-o, --output [file]",
     "The output destination, if desired. If not supplied, the markdown will print to stdout"
   )
-  .action((str: GenType) => {
+  .action((str: { yamlFile?: string | boolean; output?: string | boolean }) => {
     const { yamlFile, output } = str;
     if (!yamlFile && !output) {
       program.commands.find((c: any) => c._name === "gen").help();
-      process.exit(0);
+      process.exit(1);
     }
 
     const filepath = typeof yamlFile === "string" ? yamlFile : "changelog.yaml";
@@ -52,11 +48,42 @@ program
     });
   });
 
-program.showHelpAfterError();
+program
+  .command("release")
+  .name("release")
+  .description(
+    "Moves the unreleased section to the head of the releases section and creates a new empty unreleased section.\n\n" +
+      "This is not a versioning tool! It simply moves some text around, and doesn't actually bump versions."
+  )
+  .option(
+    "-y, --yaml-file  [file]",
+    "The yaml file to be converted to Markdown. Default is changelog.yaml."
+  )
+  .option(
+    "-v, --version [new-version]",
+    "If defined, it will make this the version of the new relase."
+  )
+  .action(
+    (str: { yamlFile?: string | boolean; version?: string | boolean }) => {
+      const { yamlFile, version } = str;
+      if (!yamlFile || !(typeof yamlFile === "string")) {
+        program.commands.find((c: any) => c._name === "release").help();
+        process.exit(1);
+      }
+      const filepath =
+        typeof yamlFile === "string" ? yamlFile : "changelog.yaml";
+
+      if (!fs.existsSync(filepath)) {
+        console.error(`No file found: ${filepath}`);
+        process.exit(1);
+      }
+      const newVersion =
+        version && typeof version === "string" ? version : "unreleased";
+      return releaseVersion(yamlFile, newVersion);
+    }
+  );
 
 program.parse(process.argv);
-
-// const options = program.opts();
 
 if (!process.argv.slice(2).length) {
   program.outputHelp();
