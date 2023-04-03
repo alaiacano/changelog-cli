@@ -4,22 +4,17 @@ title: My Changelog
 description: This is an example changelog in the format I made.
 unreleased:
   version: unreleased
-  date: 2023-04-03
+  date: "2023-04-03"
+  description: This is the stuff that will be released soon. The `version` is probably still "unreleased."
+  added:
+    - description: Created the "gen" sub command to convert changelog.yaml to changelog.md
+
 releases:
-  - version: 2.0.0
-    date: 2023-04-02
-    description: This is the stuff that will be released soon.
-    added:
-      - description: Created the "gen" sub command to convert changelog.yaml to changelog.md
-      - description: Created the "release" sub command to move `unreleased` to the head
-          of the `releases` list and make a new `unreleased`.
-    fixed:
-      - description: "TODO: forgot to include a description of the ChangelogVersion."
-  - version: 0.0.0
-    date: 2023-04-01
+  - version: "0.0.0"
+    date: "2023-04-01"
     description: Came up with the idea
     added: []
-    changed:
+    changed: 
       - description: Description of a breaking change
         author:
           name: john doe
