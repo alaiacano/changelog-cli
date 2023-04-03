@@ -1,18 +1,21 @@
+import { z } from "zod";
+import zodToJsonSchema from "zod-to-json-schema";
+
 export const JSON_SCHEMA_DEFINITION =
   "# yaml-language-server: $schema=https://gist.githubusercontent.com/alaiacano/307e2fb6acb8d7c9be5137e8f33c4673/raw/b194eb64a4b7e71b77736d33258df7157f12331a/changelogschema.json";
 
 /**
  * Represents a single change. Multiple `ChangelogEntry`s roll up into a `ChangelogRelease`
  */
-export type ChangelogEntry = {
-  description: string;
-  diff?: string;
-  author?: {
-    name: string;
-    email?: string;
-  };
-  breaking?: boolean;
-};
+const changelogEntry = z.object({
+  description: z.string(),
+  diff: z.string().optional(),
+  author: z
+    .object({ name: z.string(), email: z.string().optional() })
+    .optional(),
+  breaking: z.boolean().optional(),
+});
+export type ChangelogEntry = z.infer<typeof changelogEntry>;
 
 /**
  * Represents a single release (or `unreleased`) version.
@@ -24,29 +27,25 @@ export type ChangelogEntry = {
  * * fixed - bug fixes, etc
  * * removed - what functionality whas removed?
  */
-export type ChangelogVersion = {
-  // Version should be semantic version `major.minor.patch` or "cal-ver" `yy.mm.xx`
-  version: string;
-  // TODO: add description
-  // Dates should be `YYYY-MM-DD` format
-  date: string;
-  tag?: string;
+const changelogVersion = z.object({
+  version: z.string(),
+  date: z.string(),
+  tag: z.string().optional(),
+  description: z.string().optional(),
+  added: z.array(changelogEntry).optional(),
+  changed: z.array(changelogEntry).optional(),
+  fixed: z.array(changelogEntry).optional(),
+  removed: z.array(changelogEntry).optional(),
+});
+export type ChangelogVersion = z.infer<typeof changelogVersion>;
 
-  // Lists of the changes made in this release.
-  added?: ChangelogEntry[];
-  changed?: ChangelogEntry[];
-  fixed?: ChangelogEntry[];
-  removed?: ChangelogEntry[];
-};
+const changelog = z.object({
+  title: z.string(),
+  description: z.string(),
+  unreleased: changelogVersion,
+  releases: z.array(changelogVersion).optional(),
+});
+export type Changelog = z.infer<typeof changelog>;
 
-/**
- * The full Changelog!
- *
- * There is a single `unreleased` field and a list of `releases`.
- */
-export type Changelog = {
-  title: string;
-  description: string;
-  unreleased: ChangelogVersion;
-  releases?: ChangelogVersion[];
-};
+// The json schema for this. Dump it to a file with `npm run schemagen > schema.json`
+export const jsonSchema = zodToJsonSchema(changelog, "changelog");
