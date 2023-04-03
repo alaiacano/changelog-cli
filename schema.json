@@ -1,208 +1,109 @@
+
+> changelog-cli@1.0.0 schemagen
+> ts-node ./src/schemagen.ts
+
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "type": "object",
-  "properties": {
-    "title": {
-      "type": "string"
-    },
-    "description": {
-      "type": "string"
-    },
-    "unreleased": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "description": {
-            "type": "string"
-          },
-          "diff": {
-            "type": "string"
-          },
-          "author": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "type": "string"
-              },
-              "email": {
-                "type": "string"
+  "$ref": "#/definitions/changelog",
+  "definitions": {
+    "changelog": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "unreleased": {
+          "type": "object",
+          "properties": {
+            "version": {
+              "type": "string"
+            },
+            "date": {
+              "type": "string"
+            },
+            "tag": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "added": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "diff": {
+                    "type": "string"
+                  },
+                  "author": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "breaking": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "description"
+                ],
+                "additionalProperties": false
               }
             },
-            "required": [
-              "name"
-            ]
+            "changed": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/changelog/properties/unreleased/properties/added/items"
+              }
+            },
+            "fixed": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/changelog/properties/unreleased/properties/added/items"
+              }
+            },
+            "removed": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/changelog/properties/unreleased/properties/added/items"
+              }
+            }
           },
-          "breaking": {
-            "type": "boolean"
-          }
+          "required": [
+            "version",
+            "date"
+          ],
+          "additionalProperties": false
         },
-        "required": [
-          "description"
-        ]
-      }
-    },
-    "releases": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "version": {
-            "type": "string"
-          },
-          "date": {
-            "type": "string"
-          },
-          "tag": {
-            "type": "string"
-          },
-          "added": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "description": {
-                  "type": "string"
-                },
-                "diff": {
-                  "type": "string"
-                },
-                "author": {
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "string"
-                    },
-                    "email": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "name"
-                  ]
-                },
-                "breaking": {
-                  "type": "boolean"
-                }
-              },
-              "required": [
-                "description"
-              ]
-            }
-          },
-          "changed": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "description": {
-                  "type": "string"
-                },
-                "diff": {
-                  "type": "string"
-                },
-                "author": {
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "string"
-                    },
-                    "email": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "name"
-                  ]
-                },
-                "breaking": {
-                  "type": "boolean"
-                }
-              },
-              "required": [
-                "description"
-              ]
-            }
-          },
-          "fixed": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "description": {
-                  "type": "string"
-                },
-                "diff": {
-                  "type": "string"
-                },
-                "author": {
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "string"
-                    },
-                    "email": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "name"
-                  ]
-                },
-                "breaking": {
-                  "type": "boolean"
-                }
-              },
-              "required": [
-                "description"
-              ]
-            }
-          },
-          "removed": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "description": {
-                  "type": "string"
-                },
-                "diff": {
-                  "type": "string"
-                },
-                "author": {
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "string"
-                    },
-                    "email": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "name"
-                  ]
-                },
-                "breaking": {
-                  "type": "boolean"
-                }
-              },
-              "required": [
-                "description"
-              ]
-            }
+        "releases": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/changelog/properties/unreleased"
           }
-        },
-        "required": [
-          "version",
-          "date"
-        ]
-      }
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "unreleased"
+      ],
+      "additionalProperties": false
     }
   },
-  "required": [
-    "title",
-    "description",
-    "unreleased"
-  ]
+  "$schema": "http://json-schema.org/draft-07/schema#"
 }

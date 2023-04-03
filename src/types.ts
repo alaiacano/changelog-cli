@@ -1,4 +1,5 @@
 import { z } from "zod";
+import zodToJsonSchema from "zod-to-json-schema";
 
 export const JSON_SCHEMA_DEFINITION =
   "# yaml-language-server: $schema=https://gist.githubusercontent.com/alaiacano/307e2fb6acb8d7c9be5137e8f33c4673/raw/b194eb64a4b7e71b77736d33258df7157f12331a/changelogschema.json";
@@ -45,3 +46,6 @@ const changelog = z.object({
   releases: z.array(changelogVersion).optional(),
 });
 export type Changelog = z.infer<typeof changelog>;
+
+// The json schema for this. Dump it to a file with `npm run schemagen > schema.json`
+export const jsonSchema = zodToJsonSchema(changelog, "changelog");
