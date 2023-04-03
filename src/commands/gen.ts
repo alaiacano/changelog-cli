@@ -39,6 +39,10 @@ const stringifyVersion = (ver: ChangelogVersion): string => {
   // Version header
   output += `## [${ver.version}] - ${ver.date}\n\n`;
 
+  if (ver.description) {
+    output += `${ver.description}\n\n`;
+  }
+
   if (ver.added && ver.added.length > 0) {
     output += "### Added\n\n";
     output += stringifyEntries(ver.added);
@@ -66,7 +70,7 @@ export const yamlToMarkdown = (fileName: string): Promise<string> => {
   return fs.readFile(fileName, "utf8").then((text) => {
     const cl = YAML.parse(text) as Changelog;
     // Start building the file.
-    let output = "";
+    let output = `<!--\nNOTE! This is an auto-generated changelog file.\nEdit ${fileName} instead of this otherwise changes will likely be lost.\n-->\n\n`;
 
     // Mandatory Title
     output += `# ${cl.title}\n\n`;
@@ -78,7 +82,6 @@ export const yamlToMarkdown = (fileName: string): Promise<string> => {
     output += stringifyVersion(cl.unreleased);
 
     // Older versions:
-    // Mandatory unreleased
     cl.releases?.forEach((release) => {
       output += stringifyVersion(release);
     });
