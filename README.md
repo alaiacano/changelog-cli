@@ -27,7 +27,7 @@ Commands:
   help [command]     display help for command
 ```
 
-# Example
+# Example: Generating Markdown
 
 Here's an example input. Note that the `yaml-language-server` line at the top is important! You should be using the [Redhat YAML Language Support for VSCode](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml) (or similar) in order to get real-time verification of your syntax.
 
@@ -77,6 +77,55 @@ Running `changelog gen -y changelog.yml` produces:
 This is an example changelog in the format I made.
 
 ## [unreleased] - 2023-04-02
+
+### Added
+
+- Created the "gen" sub command to convert changelog.yaml to changelog.md- Created the "release" sub command to move `unreleased` to the head of the `releases` list and make a new `unreleased`.
+
+### Fixed
+
+- TODO: forgot to include a description of the ChangelogVersion.
+
+## [0.0.0] - 2023-04-01
+
+### Changed
+
+Breaking:
+
+- Description of a breaking change - john doe (john@doe.com)
+
+Non-Breaking:
+
+- A notable but non-breaking change. - Jane Doe (jane@doe.com)
+
+### Fixed
+
+- Finally fixed the bug everyone ran into.
+
+### Removed
+
+- Got rid of the depreated code.
+```
+
+# Example: Making a Release
+
+The `changelog release` command will put the `unreleased` section into the head of the `releases` list and create a new `unreleased` section for you. Running these two commands using the `changelog.yaml` from above
+
+```bash
+changelog release -y example.yaml -v 2.0.0
+changelog gen -y example.yaml
+```
+
+will yield:
+
+```markdown
+# My Changelog
+
+This is an example changelog in the format I made.
+
+## [unreleased] - 2023-04-03
+
+## [2.0.0] - 2023-04-02
 
 ### Added
 
