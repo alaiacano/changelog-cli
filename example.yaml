@@ -7,7 +7,7 @@ unreleased:
   date: "2023-04-03"
   description: This is the stuff that will be released soon. The `version` is probably still "unreleased."
   added:
-    - description: Created the "generate" option to convert changelog.yaml to changelog.md
+    - description: Created the "gen" sub command to convert changelog.yaml to changelog.md
 
 releases:
   - version: "0.0.0"
