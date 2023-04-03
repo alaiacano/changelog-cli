@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/alaiacano/changelog-cli/main/schema.json
+# yaml-language-server: $schema=schema.json
 
 title: My Changelog
 description: This is an example changelog in the format I made.
