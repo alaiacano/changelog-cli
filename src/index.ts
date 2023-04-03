@@ -8,22 +8,38 @@ const figlet = require("figlet");
 
 const program = new Command();
 
-// console.log(figlet.textSync("Changelog"));
-
 program
   .version("1.0.0")
   .description("A CLI for managing changelogs")
-  .option("-m, --markdown  [file]", "Convert changelog.yaml to markdown")
+  .option(
+    "-y, --yaml-file  [file]",
+    "The yaml file to be converted to Markdown. Default is changelog.yaml."
+  )
+  .option(
+    "-o, --output [file]",
+    "The output destination, if desired. If not supplied, the markdown will print to stdout"
+  )
   .parse(process.argv);
 
 const options = program.opts();
 
 // check if the option has been used the user
-if (options.markdown) {
+if (options.yamlFile) {
   const filepath =
-    typeof options.markdown === "string" ? options.markdown : __dirname;
-  yamlToMarkdown(filepath).then(console.log);
-  // console.log(text);
+    typeof options.yamlFile === "string" ? options.yamlFile : "changelog.yaml";
+
+  if (!fs.existsSync(filepath)) {
+    console.error(`No file found: ${filepath}`);
+    process.exit(1);
+  }
+
+  yamlToMarkdown(filepath).then((md: string) => {
+    if (options.output && typeof options.output === "string") {
+      fs.writeFileSync(options.output, md);
+    } else {
+      console.log(md);
+    }
+  });
 }
 
 if (!process.argv.slice(2).length) {

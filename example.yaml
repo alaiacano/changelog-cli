@@ -4,13 +4,10 @@ title: My Changelog
 description: This is an example changelog in the format I made.
 unreleased:
   version: unreleased
-  date: "2023-04-02"
+  date: "2023-04-03"
   description: This is the stuff that will be released soon. The `version` is probably still "unreleased."
   added:
-    - description: Made a changelog!
-      author: 
-        name: Adam Laiacano
-      breaking: false
+    - description: Created the "generate" option to convert changelog.yaml to changelog.md
 
 releases:
   - version: "0.0.0"
