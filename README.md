@@ -32,19 +32,17 @@ Commands:
 Here's an example input. Note that the `yaml-language-server` line at the top is important! You should be using the [Redhat YAML Language Support for VSCode](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml) (or similar) in order to get real-time verification of your syntax.
 
 ```yaml
-# yaml-language-server: $schema=https://gist.githubusercontent.com/alaiacano/307e2fb6acb8d7c9be5137e8f33c4673/raw/b194eb64a4b7e71b77736d33258df7157f12331a/changelogschema.json
+# yaml-language-server: $schema=schema.json
 
 title: My Changelog
 description: This is an example changelog in the format I made.
 unreleased:
   version: unreleased
-  date: "2023-04-02"
-  description: This is the stuff that will be released soon.
+  date: "2023-04-03"
+  description: This is the stuff that will be released soon. The `version` is probably still "unreleased."
   added:
     - description: Created the "gen" sub command to convert changelog.yaml to changelog.md
-    - description: Created the "release" sub command to move `unreleased` to the head of the `releases` list and make a new `unreleased`.
-  fixed:
-    - description: "TODO: forgot to include a description of the ChangelogVersion."
+
 releases:
   - version: "0.0.0"
     date: "2023-04-01"
@@ -72,21 +70,26 @@ releases:
 Running `changelog gen -y changelog.yml` produces:
 
 ```markdown
+<!--
+NOTE! This is an auto-generated changelog file.
+Edit example.yaml instead of this otherwise changes will likely be lost.
+-->
+
 # My Changelog
 
 This is an example changelog in the format I made.
 
-## [unreleased] - 2023-04-02
+## [unreleased] - 2023-04-03
+
+This is the stuff that will be released soon. The `version` is probably still "unreleased."
 
 ### Added
 
-- Created the "gen" sub command to convert changelog.yaml to changelog.md- Created the "release" sub command to move `unreleased` to the head of the `releases` list and make a new `unreleased`.
-
-### Fixed
-
-- TODO: forgot to include a description of the ChangelogVersion.
+- Created the "gen" sub command to convert changelog.yaml to changelog.md
 
 ## [0.0.0] - 2023-04-01
+
+Came up with the idea
 
 ### Changed
 
