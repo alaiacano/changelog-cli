@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: changelog-lib
+  annotations:
+    backstage.io/changelog: changelog.yaml
+spec:
+  type: library
+  lifecycle: experimental
+  owner: guests
