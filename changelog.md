@@ -9,7 +9,7 @@ Changelog is updated on major changes.
 
 ## [unreleased] - 2023-04-03
 
-This is the stuff that will be released soon. The `version` is probably still "unreleased."
+Preparing for public release.
 
 ### Added
 

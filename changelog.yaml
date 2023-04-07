@@ -5,7 +5,7 @@ description: Changelog is updated on major changes.
 unreleased:
   version: unreleased
   date: "2023-04-03"
-  description: This is the stuff that will be released soon. The `version` is probably still "unreleased."
+  description: Preparing for public release.
   changed:
     - description: Started to actually use the changelog for the project!
     - description: Updated README for an external audience.
