@@ -52,8 +52,8 @@ program
   .command("release")
   .name("release")
   .description(
-    "Moves the unreleased section to the head of the releases section and creates a new empty unreleased section.\n\n" +
-      "This is not a versioning tool! It simply moves some text around, and doesn't actually bump versions."
+    "Moves the unreleased section to the head of the releases section and creates a new empty unreleased section.\n" +
+      "NOTE: This is not a versioning tool! It simply moves some text around, and doesn't actually bump versions."
   )
   .option(
     "-y, --yaml-file  [file]",
@@ -61,7 +61,7 @@ program
   )
   .option(
     "-v, --version [new-version]",
-    "If defined, it will make this the version of the new relase."
+    'If defined, it will make this the version of the new relase. Otherwise will move "unreleased" to the head of\nthe releases list.'
   )
   .action(
     (str: { yamlFile?: string | boolean; version?: string | boolean }) => {
