@@ -6,8 +6,6 @@ unreleased:
   version: unreleased
   date: 2023-04-07
 releases:
-  - version: unreleased
-    date: 2023-04-07
   - version: 0.1.1
     date: 2023-04-07
     description: Preparing for public release.

@@ -19,6 +19,7 @@ Preparing for public release.
 - Added CONTRIBUTING.md
 - Published to npm
 
+
 ### Changed
 
 Breaking:
@@ -29,9 +30,11 @@ Non-Breaking:
 
 - Started to actually use the changelog for the project!
 
+
 ### Fixed
 
 - Fixed a bug where newlines were missing so all changelog items showed up in a single line. [#](https://github.com/alaiacano/changelog-cli/pull/7)
+
 
 ## [0.0.0] - 2023-04-01
 
@@ -41,6 +44,9 @@ Came up with the idea
 
 - General structure of the project.
 
+
 ### Changed
 
 - Generate schemas in Json Schema and Typescript using zod [#](https://github.com/alaiacano/changelog-cli/pull/5)
+
+
