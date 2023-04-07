@@ -10,8 +10,8 @@ const writeLine = (entry: ChangelogEntry): string => {
     if (entry.author?.email) {
       line += ` (${entry.author?.email})`;
     }
-    line += "\n";
   }
+  line += "\n";
   return line;
 };
 
