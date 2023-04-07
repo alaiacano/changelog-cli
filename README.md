@@ -1,4 +1,4 @@
-This is a simple utility to manage Changelogs.
+This is a simple utility to manage Changelogs. Consider it in alpha for now, until there are tests.
 
 It was inspired by two things:
 
