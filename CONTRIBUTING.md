@@ -5,3 +5,9 @@ If you make a significant change, update the changelog (duh!). Edit `changelog.y
 ```bash
 changelog gen -y changelog.yaml -o changelog.md
 ```
+
+If you make a change to the types in `types.ts`, you must regenerate the `schema.json` file:
+
+```
+npm run schemagen > schema.json
+```

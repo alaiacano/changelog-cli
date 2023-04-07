@@ -11,6 +11,9 @@ const writeLine = (entry: ChangelogEntry): string => {
       line += ` (${entry.author?.email})`;
     }
   }
+  if (entry.url) {
+    line += ` [#](${entry.url})`;
+  }
   line += "\n";
   return line;
 };

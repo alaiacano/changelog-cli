@@ -13,6 +13,9 @@ unreleased:
     - description: Created the "gen" sub command to convert changelog.yaml to changelog.md
     - description: Added CONTRIBUTING.md
     - description: Published to npm
+  fixed:
+    - description: Fixed a bug where newlines were missing so all changelog items showed up in a single line.
+      url: https://github.com/alaiacano/changelog-cli/pull/7
 
 releases:
   - version: "0.0.0"
@@ -20,6 +23,6 @@ releases:
     description: Came up with the idea
     changed:
       - description: Generate schemas in Json Schema and Typescript using zod
-        diff: https://github.com/alaiacano/changelog-cli/pull/5
+        url: https://github.com/alaiacano/changelog-cli/pull/5
     added: 
       - description: General structure of the project.

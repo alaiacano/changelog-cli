@@ -82,10 +82,10 @@ releases:
         breaking: false
     removed:
       - description: Got rid of the depreated code.
-        diff: http://www.github.com/org/project/pull/420
+        url: http://www.github.com/org/project/pull/420
     fixed:
       - description: Finally fixed the bug everyone ran into.
-        diff: http://www.github.com/org/project/issues/421
+        url: http://www.github.com/org/project/issues/421
 ```
 
 Running `changelog gen -y changelog.yml` produces:
@@ -124,11 +124,11 @@ Non-Breaking:
 
 ### Fixed
 
-- Finally fixed the bug everyone ran into.
+- Finally fixed the bug everyone ran into. [#](http://www.github.com/org/project/issues/421)
 
 ### Removed
 
-- Got rid of the depreated code.
+- Got rid of the depreated code. [#](http://www.github.com/org/project/pull/420)
 ```
 
 # Example: Making a Release

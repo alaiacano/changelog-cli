@@ -9,7 +9,7 @@ export const JSON_SCHEMA_DEFINITION =
  */
 const changelogEntry = z.object({
   description: z.string(),
-  diff: z.string().optional(),
+  url: z.string().optional(),
   author: z
     .object({ name: z.string(), email: z.string().optional() })
     .optional(),
