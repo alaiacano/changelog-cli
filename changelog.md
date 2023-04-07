@@ -7,7 +7,9 @@ Edit changelog.yaml instead of this otherwise changes will likely be lost.
 
 Changelog is updated on major changes.
 
-## [unreleased] - 2023-04-03
+## [unreleased] - 2023-04-07
+
+## [0.1.1] - 2023-04-07
 
 Preparing for public release.
 
@@ -16,7 +18,6 @@ Preparing for public release.
 - Created the "gen" sub command to convert changelog.yaml to changelog.md
 - Added CONTRIBUTING.md
 - Published to npm
-
 
 ### Changed
 
@@ -28,11 +29,9 @@ Non-Breaking:
 
 - Started to actually use the changelog for the project!
 
-
 ### Fixed
 
-- Fixed a bug where newlines were missing so all changelog items showed up in a single line.
-
+- Fixed a bug where newlines were missing so all changelog items showed up in a single line. [#](https://github.com/alaiacano/changelog-cli/pull/7)
 
 ## [0.0.0] - 2023-04-01
 
@@ -42,9 +41,6 @@ Came up with the idea
 
 - General structure of the project.
 
-
 ### Changed
 
-- Generate schemas in Json Schema and Typescript using zod
-
-
+- Generate schemas in Json Schema and Typescript using zod [#](https://github.com/alaiacano/changelog-cli/pull/5)

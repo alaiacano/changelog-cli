@@ -1,29 +1,33 @@
-# yaml-language-server: $schema=schema.json
+# yaml-language-server: $schema=https://gist.githubusercontent.com/alaiacano/307e2fb6acb8d7c9be5137e8f33c4673/raw/b194eb64a4b7e71b77736d33258df7157f12331a/changelogschema.json
 
 title: Changelog project Changelog
 description: Changelog is updated on major changes.
 unreleased:
   version: unreleased
-  date: "2023-04-03"
-  description: Preparing for public release.
-  changed:
-    - description: Started to actually use the changelog for the project!
-    - description: Changed `diff` to `url` for changelog entries.
-      breaking: true
-  added:
-    - description: Created the "gen" sub command to convert changelog.yaml to changelog.md
-    - description: Added CONTRIBUTING.md
-    - description: Published to npm
-  fixed:
-    - description: Fixed a bug where newlines were missing so all changelog items showed up in a single line.
-      url: https://github.com/alaiacano/changelog-cli/pull/7
-
+  date: 2023-04-07
 releases:
-  - version: "0.0.0"
-    date: "2023-04-01"
+  - version: unreleased
+    date: 2023-04-07
+  - version: 0.1.1
+    date: 2023-04-07
+    description: Preparing for public release.
+    changed:
+      - description: Started to actually use the changelog for the project!
+      - description: Changed `diff` to `url` for changelog entries.
+        breaking: true
+    added:
+      - description: Created the "gen" sub command to convert changelog.yaml to changelog.md
+      - description: Added CONTRIBUTING.md
+      - description: Published to npm
+    fixed:
+      - description: Fixed a bug where newlines were missing so all changelog items
+          showed up in a single line.
+        url: https://github.com/alaiacano/changelog-cli/pull/7
+  - version: 0.0.0
+    date: 2023-04-01
     description: Came up with the idea
     changed:
       - description: Generate schemas in Json Schema and Typescript using zod
         url: https://github.com/alaiacano/changelog-cli/pull/5
-    added: 
+    added:
       - description: General structure of the project.

@@ -60,16 +60,13 @@ program
     "The yaml file to be converted to Markdown. Default is changelog.yaml."
   )
   .option(
-    "-v, --version [new-version]",
+    "-n, --new-version [new-version]",
     'If defined, it will make this the version of the new relase. Otherwise will move "unreleased" to the head of\nthe releases list.'
   )
   .action(
-    (str: { yamlFile?: string | boolean; version?: string | boolean }) => {
-      const { yamlFile, version } = str;
-      if (!yamlFile || !(typeof yamlFile === "string")) {
-        program.commands.find((c: any) => c._name === "release").help();
-        process.exit(1);
-      }
+    (str: { yamlFile?: string | boolean; newVersion?: string | boolean }) => {
+      const { yamlFile, newVersion } = str;
+
       const filepath =
         typeof yamlFile === "string" ? yamlFile : "changelog.yaml";
 
@@ -77,9 +74,11 @@ program
         console.error(`No file found: ${filepath}`);
         process.exit(1);
       }
-      const newVersion =
-        version && typeof version === "string" ? version : "unreleased";
-      return releaseVersion(yamlFile, newVersion);
+      const newVersionNumber =
+        newVersion && typeof newVersion === "string"
+          ? newVersion
+          : "unreleased";
+      return releaseVersion(filepath, newVersionNumber);
     }
   );
 
