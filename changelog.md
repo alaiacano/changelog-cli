@@ -3,9 +3,9 @@ NOTE! This is an auto-generated changelog file.
 Edit changelog.yaml instead of this otherwise changes will likely be lost.
 -->
 
-# My Changelog
+# Changelog project Changelog
 
-This is an example changelog in the format I made.
+Changelog is updated on major changes.
 
 ## [unreleased] - 2023-04-03
 
@@ -13,11 +13,11 @@ This is the stuff that will be released soon. The `version` is probably still "u
 
 ### Added
 
-- Created the "gen" sub command to convert changelog.yaml to changelog.md
+- Created the "gen" sub command to convert changelog.yaml to changelog.md- Added CONTRIBUTING.md- Published to npm
 
 ### Changed
 
-- Started to actually use the changelog for the project.
+- Started to actually use the changelog for the project!- Updated README for an external audience.
 
 ## [0.0.0] - 2023-04-01
 
