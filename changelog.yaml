@@ -8,7 +8,8 @@ unreleased:
   description: Preparing for public release.
   changed:
     - description: Started to actually use the changelog for the project!
-    - description: Updated README for an external audience.
+    - description: Changed `diff` to `url` for changelog entries.
+      breaking: true
   added:
     - description: Created the "gen" sub command to convert changelog.yaml to changelog.md
     - description: Added CONTRIBUTING.md
