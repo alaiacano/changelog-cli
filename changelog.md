@@ -1,33 +1,33 @@
+<!--
+NOTE! This is an auto-generated changelog file.
+Edit changelog.yaml instead of this otherwise changes will likely be lost.
+-->
+
 # My Changelog
 
 This is an example changelog in the format I made.
 
-## [unreleased] - 2023-04-02
+## [unreleased] - 2023-04-03
+
+This is the stuff that will be released soon. The `version` is probably still "unreleased."
 
 ### Added
 
-- Created the "gen" sub command to convert changelog.yaml to changelog.md- Created the "release" sub command to move `unreleased` to the head of the `releases` list and make a new `unreleased`.
-
-### Fixed
-
-- TODO: forgot to include a description of the ChangelogVersion.
-
-## [0.0.0] - 2023-04-01
+- Created the "gen" sub command to convert changelog.yaml to changelog.md
 
 ### Changed
 
-Breaking:
+- Started to actually use the changelog for the project.
 
-- Description of a breaking change - john doe (john@doe.com)
+## [0.0.0] - 2023-04-01
 
-Non-Breaking:
+Came up with the idea
 
-- A notable but non-breaking change. - Jane Doe (jane@doe.com)
+### Added
 
-### Fixed
+- General structure of the project.
 
-- Finally fixed the bug everyone ran into.
+### Changed
 
-### Removed
+- Generate schemas in Json Schema and Typescript using zod
 
-- Got rid of the depreated code.

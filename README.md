@@ -1,6 +1,27 @@
-This is a simple utility to manage Changelogs. It was inspired by https://keepachangelog.com/, which has the caveat that there is no standard changelog format. Rather than try to parse arbitrary markdown, this project defines typed json schema for a Changelog and converts it to a standard Markdown format. It will also have some other utilities.
+This is a simple utility to manage Changelogs.
 
-To install from source (the only way so far):
+It was inspired by two things:
+
+- https://keepachangelog.com and is intended to help you manage changelogs using that paradigm. Unfortunately, there are no standard formats for changelogs which makes it difficult to build tooling.
+- The [ADR plugin for Backstage](https://github.com/backstage/backstage/tree/master/plugins/adr), and using tools like [pyadr](https://github.com/opinionated-digital-center/pyadr) to produce markdown documents in a consistent and reliable format.
+
+This tool defines a standard schema for changelogs, both as TypeScript types and a JSON Schema. Developers create their changelog in YAML format, and use `changelog` to migrate it to markdown and/or manage the release cycle.
+
+# Installing
+
+To install:
+
+```bash
+npm i @alaiacano/changelog
+```
+
+or
+
+```bash
+yarn add @alaiacano/changelog
+```
+
+From source:
 
 ```bash
 npm run build
