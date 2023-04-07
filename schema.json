@@ -1,7 +1,3 @@
-
-> @alaiacano/changelog@0.1.0 schemagen
-> ts-node ./src/schemagen.ts
-
 {
   "$ref": "#/definitions/changelog",
   "definitions": {
